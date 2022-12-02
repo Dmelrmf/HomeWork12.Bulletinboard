@@ -1,0 +1,25 @@
+{% extends 'board/layout.html' %}
+
+{% block content %}
+
+<div style="margin-top: 50px;" class="ui container">
+    <h1 class="ui center aligned header">Bulletin board</h1>
+
+    <form class="ui form" action="/add" method="post">
+        <div class="field">
+            <label>New board</label>
+            <input type="text" name="title" placeholder="Enter your board"><br>
+        </div>
+        <button class="ui teal basic button" type="submit">Add</button>
+    </form>
+
+{% for board in b_list %}
+<div class="ui segment">
+    <p class="ui big header">№{{ board.id }} {{ board.title }}</p>
+
+
+    <a class="ui negative basic button" href="/delete/{{ board.id }}">Delete</a>
+</div>
+{% endfor %}
+</div>
+{% endblock content %}
